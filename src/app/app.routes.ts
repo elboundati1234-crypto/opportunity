@@ -8,6 +8,8 @@ import { Dashboard } from './components/dashboard/dashboard';
 import { Favoris } from './components/favoris/favoris'; 
 import { Alertes } from './components/alertes/alertes'; 
 import { Profil } from './components/profil/profil';
+import { FormationList } from './components/formation-list/formation-list';
+import { EventList } from './components/event-list/event-list';
 
 // NOTE : Votre compilateur peut toujours exiger le suffixe '.component' dans les noms de fichiers.
 // Si ça ne compile pas, renommez vos fichiers .ts en .component.ts
@@ -17,6 +19,8 @@ export const routes: Routes = [
   { path: '', component: Home },
   { path: 'bourses', component: ScholarshipList },
   { path: 'bourse/:id', component: ScholarshipDetail },
+  { path: 'formations', component: FormationList },  // <--- NOUVEAU
+  { path: 'evenements', component: EventList },      // <--- NOUVEAU
 
   // 2. Pages d'Authentification
   { path: 'login', component: Login },
