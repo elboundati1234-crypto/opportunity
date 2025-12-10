@@ -1,35 +1,63 @@
 <div class="container mt-5">
   <h1 class="mb-4 text-success">Tableau de bord utilisateur</h1>
-  <p class="lead">Gérez vos candidatures, vos bourses sauvegardées et vos préférences d'alertes.</p>
+  <p class="lead">Gérez vos opportunités, vos préférences et votre progression sur Opportunity.</p>
 
-  <div class="row g-4 mt-3">
+  <div class="row g-4 mt-4">
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-body">
-          <h5 class="card-title"><i class="bi bi-person-circle me-2"></i>Mon Profil</h5>
-          <p class="card-text">Mettez à jour vos informations personnelles et vos critères de matching.</p>
-          <a routerLink="/profil" class="btn btn-outline-success">Gérer le profil</a>
+      <div class="card shadow-lg h-100 border-start border-primary border-4">
+        <div class="card-body d-flex flex-column align-items-center">
+          
+          <h5 class="card-title text-primary mb-3">Mon Profil</h5>
+          
+          <div class="progress-circle text-center mb-3" 
+               [ngStyle]="{'background': 'conic-gradient(#198754 ' + profileProgress + '%, #eee 0deg)'}">
+               <span class="fs-4 fw-bold">{{ profileProgress }}%</span>
+          </div>
+          
+          <p class="card-text text-center flex-grow-1">
+            Complétez vos critères pour le matching à 100%.
+          </p>
+          <a routerLink="/profil" class="btn btn-primary mt-auto w-100">Gérer le profil</a>
         </div>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-body">
-          <h5 class="card-title"><i class="bi bi-bookmark-star-fill me-2"></i>Mes Bourses Favoris</h5>
-          <p class="card-text">Retrouvez les bourses que vous avez sauvegardées pour un suivi.</p>
-          <a routerLink="/favoris" class="btn btn-success">Voir les favoris (3)</a>
+      <div class="card shadow-lg h-100 border-start border-warning border-4">
+        <div class="card-body d-flex flex-column align-items-center">
+          <h5 class="card-title text-warning mb-3">Bourses Favoris</h5>
+          
+          <div class="bg-light p-4 rounded-circle mb-3 dashboard-circle">
+            <p class="fs-1 fw-bold text-center text-warning">{{ favoriteCount }}</p>
+          </div>
+          
+          <p class="card-text text-center flex-grow-1">
+            Bourses sauvegardées et suivies personnellement.
+          </p>
+          <a routerLink="/favoris" class="btn btn-warning mt-auto w-100">Voir les favoris</a>
         </div>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100">
-        <div class="card-body">
-          <h5 class="card-title"><i class="bi bi-bell-fill me-2"></i>Alertes & Deadlines</h5>
-          <p class="card-text">Gérez les notifications et rappels automatiques avant les dates limites.</p>
-          <a routerLink="/alertes" class="btn btn-outline-warning">Gérer les alertes</a>
+      <div class="card shadow-lg h-100 border-start border-danger border-4">
+        <div class="card-body d-flex flex-column align-items-center">
+          <h5 class="card-title text-danger mb-3">Alertes Activées</h5>
+          
+          <div class="bg-light p-4 rounded-circle mb-3 dashboard-circle">
+            <p class="fw-bold text-center" 
+               [ngClass]="{'fs-1': activeAlerts, 'fs-4': !activeAlerts}" 
+               [class.text-danger]="activeAlerts" 
+               [class.text-muted]="!activeAlerts">
+               {{ alertStatusText }}
+            </p>
+          </div>
+          
+          <p class="card-text text-center flex-grow-1">
+            Gérez les rappels de deadlines et les notifications de nouveaux matchs.
+          </p>
+          <a routerLink="/alertes" class="btn btn-danger mt-auto w-100">Gérer les alertes</a>
         </div>
       </div>
     </div>
