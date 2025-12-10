@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="col-md-8 mx-auto">
+    <div class="card shadow p-4">
+      <h1 class="card-title text-success mb-4">Gestion des Alertes & Notifications</h1>
+      <p class="text-muted">Définissez quand et comment vous souhaitez être informé(e) des nouvelles bourses et des dates limites.</p>
+
+      <form (ngSubmit)="saveAlertPreferences()">
+
+        <div class="form-check form-switch mb-4">
+          <input class="form-check-input" type="checkbox" role="switch" id="emailSwitch" [(ngModel)]="alertPreferences.emailNotification" name="emailNotification">
+          <label class="form-check-label fw-bold" for="emailSwitch">Alerte par Email</label>
+          <div class="form-text">Recevoir une notification par e-mail lorsqu'une nouvelle bourse correspond à mes critères.</div>
+        </div>
+        
+        <div class="form-check form-switch mb-4">
+          <input class="form-check-input" type="checkbox" role="switch" id="matchSwitch" [(ngModel)]="alertPreferences.matchNotification" name="matchNotification">
+          <label class="form-check-label fw-bold" for="matchSwitch">Alerte Nouveau Matching</label>
+          <div class="form-text">Recevoir une alerte pour chaque nouvelle opportunité correspondant à 100% à mon profil.</div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">Rappel de Date Limite :</label>
+          <div class="input-group">
+            <input type="number" class="form-control" [(ngModel)]="alertPreferences.reminderDays" name="reminderDays" min="1" max="30" required>
+            <span class="input-group-text">jours avant la deadline.</span>
+          </div>
+          <div class="form-text">Recevoir un rappel (notification) ce nombre de jours avant la date limite de candidature.</div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 mt-3">
+          Enregistrer les Préférences d'Alertes
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

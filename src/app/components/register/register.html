@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="col-md-5 mx-auto">
+    <div class="card shadow p-4">
+      <h3 class="text-center mb-3">Créer un compte</h3>
+
+      <form (ngSubmit)="register()">
+        <div class="mb-3">
+          <label>Nom complet :</label>
+          <input class="form-control" [(ngModel)]="name" name="name" required />
+        </div>
+
+        <div class="mb-3">
+          <label>Email :</label>
+          <input class="form-control" type="email" [(ngModel)]="email" name="email" required />
+        </div>
+
+        <div class="mb-3">
+          <label>Mot de passe :</label>
+          <input class="form-control" type="password" [(ngModel)]="password" name="password" required />
+        </div>
+
+        <button class="btn btn-success w-100">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+</div>

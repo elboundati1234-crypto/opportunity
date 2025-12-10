@@ -1,0 +1,87 @@
+<div class="container mt-4">
+  <h2 class="mb-4 fw-bold">Liste des bourses disponibles</h2>
+
+  <div class="card shadow-sm p-3 mb-4 bg-light">
+    <div class="row g-3 align-items-center">
+
+      <div class="col-md-4">
+        <label class="form-label visually-hidden">Mot-clé</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Rechercher par mot-clé, titre..."
+          [(ngModel)]="keyword"
+          (ngModelChange)="applyFilters()">
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label visually-hidden">Niveau</label>
+        <select 
+          class="form-select" 
+          [(ngModel)]="level"
+          (ngModelChange)="applyFilters()">
+          <option value="">Tous Niveaux</option>
+          <option *ngFor="let lvl of levels" [value]="lvl">{{ lvl }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label visually-hidden">Domaine</label>
+        <select 
+          class="form-select" 
+          [(ngModel)]="selectedDomain"
+          (ngModelChange)="applyFilters()">
+          <option value="">Tous Domaines</option>
+          <option *ngFor="let domain of domains" [value]="domain">{{ domain }}</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-outline-secondary w-100" (click)="clearFilters()">
+          Réinitialiser
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <p class="text-muted mb-3">
+    {{ filteredScholarships.length }} bourses trouvées correspondant aux critères.
+  </p>
+
+  <div class="row g-3">
+    <div class="col-md-4" *ngFor="let s of filteredScholarships; let i = index"> 
+      <div class="card h-100 shadow-sm border-start border-success border-4">
+        <div class="card-body d-flex flex-column">
+          
+          <a [routerLink]="['/bourse', i]" class="text-decoration-none text-dark">
+            <h5 class="card-title text-success">{{ s.title }}</h5>
+          </a>
+
+          <h6 class="card-subtitle mb-2 text-muted">{{ s.country }} ({{ s.level }})</h6>
+          
+          <p class="card-text small mb-1">
+            Domaine : <strong>{{ s.domain }}</strong>
+          </p>
+          <p class="card-text small mb-3">
+            Montant : <strong>{{ s.amount | currency:'USD':'symbol':'1.0-0' }}</strong>
+          </p>
+
+          <div class="mt-auto">
+            <p class="text-danger fw-bold mb-2">Deadline : {{ s.deadline }}</p>
+            <a [href]="s.link" target="_blank" class="btn btn-outline-success btn-sm me-2">Voir l'offre</a>
+           <button 
+    class="btn btn-sm" 
+    [ngClass]="{'btn-warning': isFavorite(s._id), 'btn-outline-secondary': !isFavorite(s._id)}" 
+    (click)="toggleFavorite(s)">
+    {{ isFavorite(s._id) ? 'Favori (★)' : 'Sauvegarder (☆)' }}
+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  <div *ngIf="filteredScholarships.length === 0" class="alert alert-warning mt-4">
+    Aucune bourse trouvée correspondant à votre recherche.
+  </div>
+
+</div>

@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <div class="card shadow p-4">
+    <h2 class="fw-bold">{{ scholarship.title }}</h2>
+
+    <p class="mt-3 fs-5">
+      <strong>Pays :</strong> {{ scholarship.country }} <br>
+      <strong>Niveau :</strong> {{ scholarship.level }} <br>
+      <strong>Date limite :</strong> {{ scholarship.deadline }}
+    </p>
+
+    <a routerLink="/bourses" class="btn btn-secondary mt-3">Retour</a>
+  </div>
+</div>

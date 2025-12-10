@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <h1 class="mb-4 text-success">Tableau de bord utilisateur</h1>
+  <p class="lead">Gérez vos candidatures, vos bourses sauvegardées et vos préférences d'alertes.</p>
+
+  <div class="row g-4 mt-3">
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-person-circle me-2"></i>Mon Profil</h5>
+          <p class="card-text">Mettez à jour vos informations personnelles et vos critères de matching.</p>
+          <a routerLink="/profil" class="btn btn-outline-success">Gérer le profil</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-bookmark-star-fill me-2"></i>Mes Bourses Favoris</h5>
+          <p class="card-text">Retrouvez les bourses que vous avez sauvegardées pour un suivi.</p>
+          <a routerLink="/favoris" class="btn btn-success">Voir les favoris (3)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-bell-fill me-2"></i>Alertes & Deadlines</h5>
+          <p class="card-text">Gérez les notifications et rappels automatiques avant les dates limites.</p>
+          <a routerLink="/alertes" class="btn btn-outline-warning">Gérer les alertes</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
